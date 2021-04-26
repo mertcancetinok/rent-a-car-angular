@@ -1,5 +1,10 @@
 <ul>
   <li *ngFor="let car of cars">
-    {{car.name}}
+    {{car.carName}}
+  </li>
+</ul>
+<ul>
+  <li *ngFor="let carimage of carImages">
+    <img src="{{carimage.imagePath}}" />
   </li>
 </ul>

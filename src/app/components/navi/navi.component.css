@@ -8,4 +8,24 @@ body{
   color: black;
 }
 
+.contact fa-icon{
+  margin-left: 10px;
+}
+.social-icons,.contact{
+  padding: 20px !important;
+}
 
+.social-icons fa-icon,.contact fa-icon{
+
+  margin-right: 10px;
+  color: blue;
+  font-size: 18px !important;
+}
+.social-icons:last-child{
+  margin-right: 30px;
+}
+.social-icons fa-icon:hover,.contact fa-icon:hover{
+  cursor: pointer;
+  color: red;
+  transition: 0.9s;
+}
