@@ -1,0 +1,11 @@
+<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<h4 class="ml-1 mt-2">Markalar</h4>
+<hr class="ml-1">
+<div class="list-group ml-1">
+  <button type="button" class="list-group-item list-group-item-action" *ngFor="let brand of brands">
+    {{brand.name}}
+  </button>
+
+</div>

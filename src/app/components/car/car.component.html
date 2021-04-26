@@ -1,10 +1,30 @@
-<ul>
-  <li *ngFor="let car of cars">
-    {{car.carName}}
-  </li>
-</ul>
-<ul>
-  <li *ngFor="let carimage of carImages">
-    <img src="{{carimage.imagePath}}" />
-  </li>
-</ul>
+<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 rounded" *ngFor="let car of cars">
+      <img src="{{carimage.imagePath}}" width="128px" height="128px" *ngFor="let carimage of carImages">
+      <hr>
+      <div class="car-body">
+        <h2 class="car-title">{{car.carName}}</h2>
+        <p>{{car.brandName}}</p>
+        <p>{{car.description}}</p>
+      </div>
+      <div class="car-footer ">
+        <div class="row">
+          <div class="car-price ml-2">
+
+            <p class="ml-1">Günlük Fiyat:<b>{{car.dailyPrice}}₺</b></p>
+          </div>
+          <div class="car-buttons ml-auto">
+            <button class="btn btn-outline-primary mr-1">Detayını Gör</button>
+            <button class="btn btn-outline-success ml-auto">Kirala</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
