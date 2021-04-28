@@ -1,11 +1,12 @@
-@import '//codepen.io/chrisdothtml/pen/ojLzJK.css';
+
 body{
   font-family: Arial, Helvetica, sans-serif;
 }
-.nav-item a{
+
+.nav-item a,.navbar-brand{
   font-size: 20px,;
   font-weight: bold;
-  color: black;
+  color: #0C0B6D !important;
 }
 
 .contact fa-icon{
@@ -18,7 +19,7 @@ body{
 .social-icons fa-icon,.contact fa-icon{
 
   margin-right: 10px;
-  color: blue;
+  color: #0C0B6D;
   font-size: 18px !important;
 }
 .social-icons:last-child{
