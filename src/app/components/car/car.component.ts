@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from 'src/app/models/car';
+import { CarDetails } from 'src/app/models/carDetails';
 import { CarService } from 'src/app/services/car.service';
 import { CarImagesService } from 'src/app/services/car-images.service';
 import { CarImage } from 'src/app/models/carImage';
-
-
+import { ActivatedRoute } from '@angular/router';
+import { Car } from 'src/app/models/car';
 
 @Component({
   selector: 'app-car',
@@ -12,26 +12,51 @@ import { CarImage } from 'src/app/models/carImage';
   styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
-  cars: Car[] = [];
-  carImages:CarImage[] = [];
+  carDetails: CarDetails[] = [];
+  cars:Car[] = [];
+  carImages: CarImage[] = [];
   dataLoaded = false;
-  constructor(private carService: CarService,private carImageService:CarImagesService) {}
+  constructor(
+    private carService: CarService,
+    private carImageService: CarImagesService,
+    private activedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.getCars();
-    this.getCarImages();
+    this.activedRoute.params.subscribe((params) => {
+      if (params['brandId']) {
+        this.getCarsByBrandId(params['brandId']);
+      }else if(params['colorId']) {
+        this.getCarsByColorId(params['colorId']);
+      }
+    });
+    this.getCarsDetails();
   }
-  getCars() {
-    this.carService.getCars().subscribe((response) => {
+  getCarsDetails() {
+    this.carService.getCarsDetails().subscribe((response) => {
+
+      this.carDetails = response.data;
+      this.dataLoaded = true;
+    });
+  }
+  getCarImagesById(carId:number){
+    this.carImageService.getCarImagesById(carId).subscribe(response=>{
+      this.carImages=response.data;
+      console.log(this.carImages);
+    })
+  }
+  getCarsByBrandId(brandId: number) {
+    this.carService.getCarsByBrandId(brandId).subscribe((response) => {
+
       this.cars = response.data;
       this.dataLoaded = true;
     });
   }
-  getCarImages(){
-    this.carImageService.getCarImages().subscribe((response)=>{
-      this.carImages = response.data;
-    })
+  getCarsByColorId(colorId: number) {
+    this.carService.getCarsByColorId(colorId).subscribe((response) => {
 
+      this.cars = response.data;
+      this.dataLoaded = true;
+    });
   }
-
 }

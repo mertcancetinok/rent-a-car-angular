@@ -6,13 +6,16 @@ import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { Brand } from 'src/app/models/brand';
+import { BrandService } from 'src/app/services/brand.service';
 @Component({
   selector: 'app-navi',
   templateUrl: './navi.component.html',
   styleUrls: ['./navi.component.css']
 })
 export class NaviComponent implements OnInit {
-
+  brands:Brand[];
+  dataLoaded=false;
   faTwitter = faTwitter;
   faFacebook = faFacebook;
   faInstagram = faInstagram;
@@ -20,9 +23,17 @@ export class NaviComponent implements OnInit {
   faLinkedin = faLinkedin;
   faPhone = faPhone;
   faEnvelope = faEnvelope;
-  constructor() { }
+  constructor(private brandService:BrandService) { }
 
   ngOnInit(): void {
+    this.getBrands();
+  }
+  getBrands(){
+    this.brandService.getBrands().subscribe(response=>{
+      console.log(response.data)
+      this.brands=response.data;
+      this.dataLoaded = true;
+    })
   }
 
 }

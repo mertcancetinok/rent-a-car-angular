@@ -5,31 +5,25 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-6 rounded" *ngFor="let carDetail of carDetails">
+    <div class="col-md-6 rounded" *ngFor="let car of cars">
       <hr>
       <div class="car-body">
-        <h2 class="car-title">{{carDetail.carName}}</h2>
-        <div>
-          <span>
-            {{carDetail.colorName}}
-          </span>
-          <span class="float-right">{{carDetail.brandName}}</span>
-        </div>
+        <h2 class="car-title">{{car.name}}</h2>
         <p></p>
         <p class="text-right" style="font-size: 20px;"></p>
         <hr>
-        <p>{{carDetail.description}}</p>
+        <p>{{car.description}}</p>
         <hr>
       </div>
       <div class="car-footer ">
         <div class="row">
           <div class="car-price ml-2">
 
-            <p class="ml-1">Günlük Fiyat:<b>{{carDetail.dailyPrice}}₺</b></p>
+            <p class="ml-1">Günlük Fiyat:<b>{{car.dailyPrice}}₺</b></p>
           </div>
           <div class="car-buttons ml-auto">
-            <a routerLink="/cars/detail/{{carDetail.carId}}" class="btn btn-outline-primary mr-1">Detayını Gör</a>
-            <button class="btn btn-outline-success ml-auto">Kirala</button>
+            <a class="btn btn-outline-primary mr-1" routerLink="/cars/detail/{{car.id}}">Detayını Gör</a>
+            <a class="btn btn-outline-success ml-auto">Kirala</a>
           </div>
         </div>
 

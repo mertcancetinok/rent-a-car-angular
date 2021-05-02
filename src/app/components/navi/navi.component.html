@@ -2,11 +2,9 @@
   <div class="col-md-12">
     <div class="row">
       <div class="contact col-md-7 col-sm-12 mr-auto text-left">
-        <fa-icon [icon]="faPhone">
-        </fa-icon>
+        <fa-icon [icon]="faPhone"> </fa-icon>
         <span>+(90-535-55555)</span>
-        <fa-icon [icon]="faEnvelope">
-        </fa-icon>
+        <fa-icon [icon]="faEnvelope"> </fa-icon>
         <span>mertcan@mertcan.com</span>
       </div>
       <div class="social-icons col-md-4 col-sm-12 ml-auto text-right">
@@ -25,52 +23,35 @@
         <a href="https://www.linkedin.com/" target="_blank">
           <fa-icon [icon]="faLinkedin"></fa-icon>
         </a>
-
       </div>
-
     </div>
-    <hr>
+    <hr />
   </div>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="#"><h1>Rent</h1></a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
+  <a class="navbar-brand" href="#">
+    <h1>Rent</h1>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#"
-          >Anasayfa <span class="sr-only">(current)</span></a
-        >
+        <a class="nav-link" href="#">Anasayfa <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           Araçlarımız
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" routerLink="/cars/brand/{{brand.id}}" *ngFor="let brand of brands">
+            {{brand.name}}
+          </a>
         </div>
       </li>
       <li class="nav-item">
@@ -82,4 +63,4 @@
     </ul>
   </div>
 </nav>
-<hr>
+<hr />
