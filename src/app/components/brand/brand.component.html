@@ -6,8 +6,11 @@
 
 </div>
 <hr class="ml-1">
+<div class="form-group w-100">
+  <input type="text" [(ngModel)]="filterTextBrand" class="form-control ml-1" placeholder="Marka filtrele" id="carSearch">
+</div>
 <div class="list-group ml-1">
-  <li routerLink="/cars/brand/{{brand.id}}" class="list-group-item list-group-item-action" *ngFor="let brand of brands">
+  <li routerLink="/cars/brand/{{brand.id}}" class="list-group-item list-group-item-action" *ngFor="let brand of brands |brandPipe:filterTextBrand">
     {{brand.name}}
   </li>
 

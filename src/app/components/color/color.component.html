@@ -6,8 +6,11 @@
 
 </div>
 <hr class="ml-1">
+<div class="form-group w-100">
+  <input type="text" [(ngModel)]="filterTextColor" class="form-control ml-1" placeholder="Renk filtrele" id="colorSearch">
+</div>
 <div class="list-group ml-1">
-  <a routerLink="/cars/color/{{color.id}}" class="list-group-item list-group-item-action" *ngFor="let color of colors">
+  <a routerLink="/cars/color/{{color.id}}" class="list-group-item list-group-item-action" *ngFor="let color of colors |colorPipe:filterTextColor">
     {{color.name}}
   </a>
 

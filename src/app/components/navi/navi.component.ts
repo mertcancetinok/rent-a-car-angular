@@ -30,7 +30,6 @@ export class NaviComponent implements OnInit {
   }
   getBrands(){
     this.brandService.getBrands().subscribe(response=>{
-      console.log(response.data)
       this.brands=response.data;
       this.dataLoaded = true;
     })

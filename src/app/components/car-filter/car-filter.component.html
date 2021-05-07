@@ -1,0 +1,46 @@
+<div *ngIf="dataLoaded==false" class="d-flex align-items-center">
+  <strong>Loading...</strong>
+  <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+
+</div>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="container">
+        <app-color></app-color>
+        <app-brand></app-brand>
+      </div>
+
+    </div>
+    <div class="col-md-10 ">
+      <div class="row">
+        <div class="col-md-6 rounded mt-2" *ngFor="let car of cars">
+          <div class="car-body">
+            <h2 class="car-title">{{car.name}}</h2>
+            <p></p>
+            <p class="text-right" style="font-size: 20px;"></p>
+            <hr>
+            <p>{{car.description}}</p>
+            <hr>
+          </div>
+          <div class="car-footer ">
+            <div class="row">
+              <div class="car-price ml-2">
+
+                <p class="ml-1">Günlük Fiyat:<b>{{car.dailyPrice}}₺</b></p>
+              </div>
+              <div class="car-buttons ml-auto">
+                <a class="btn btn-outline-primary mr-1" routerLink="/cars/detail/{{car.id}}">Detayını Gör</a>
+                <a class="btn btn-outline-success ml-auto">Kirala</a>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

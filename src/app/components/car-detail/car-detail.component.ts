@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CarDetails } from 'src/app/models/carDetails';
 import { CarImage } from 'src/app/models/carImage';
 import { CarImagesService } from 'src/app/services/car-images.service';
@@ -15,7 +16,7 @@ export class CarDetailComponent implements OnInit {
   carImages:CarImage[];
   currentImage:CarImage;
   dataLoaded=false;
-  constructor(private carService:CarService,private carImageService:CarImagesService,private activedRoute:ActivatedRoute) {
+  constructor(private carService:CarService,private carImageService:CarImagesService,private activedRoute:ActivatedRoute,private toastrService:ToastrService) {
   }
 
   ngOnInit(): void {
@@ -31,6 +32,7 @@ export class CarDetailComponent implements OnInit {
 
   }
   getCarsDetailsById(carId:number) {
+    this.toastrService.success("Ürün listelendi")
     this.carService.getCarsDetailsById(carId).subscribe((response) => {
       this.carDetails = response.data;
       this.dataLoaded = true;

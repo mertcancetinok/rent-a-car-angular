@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -10,8 +13,12 @@ import { BrandComponent } from './components/brand/brand.component';
 import { ColorComponent } from './components/color/color.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { CustomerComponent } from './components/customer/customer.component';
-import { CarfilterComponent } from './components/carfilter/carfilter.component';
+import { CarfilterComponent } from './components/car-filter/car-filter.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { CarPipe } from './pipes/car.pipe';
+import { BrandPipe } from './pipes/brand.pipe';
+import { ColorPipe } from './pipes/color.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +30,18 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
     RentalComponent,
     CustomerComponent,
     CarfilterComponent,
-    CarDetailComponent
+    CarDetailComponent,
+    CarPipe,
+    BrandPipe,
+    ColorPipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     FontAwesomeModule
   ],

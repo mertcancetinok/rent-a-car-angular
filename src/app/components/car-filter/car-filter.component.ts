@@ -4,9 +4,9 @@ import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
-  selector: 'app-carfilter',
-  templateUrl: './carfilter.component.html',
-  styleUrls: ['./carfilter.component.css']
+  selector: 'app-car-filter',
+  templateUrl: './car-filter.component.html',
+  styleUrls: ['./car-filter.component.css']
 })
 export class CarfilterComponent implements OnInit {
   cars:Car[];
@@ -15,10 +15,16 @@ export class CarfilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.activedRoute.params.subscribe(params=>{
-      if(params['brandId']){
+      if(params['brandId'] && params['colorId']){
+        console.log("her ikisi çalıştı");
+        this.getCarsByBrandAndColor(params['brandId'],params['colorId']);
+      }
+      else if(params['brandId']){
         this.getCarsByBrandId(params['brandId']);
+        console.log("brand çalıştı");
       }else if(params['colorId']) {
         this.getCarsByColorId(params['colorId']);
+        console.log("color çalıştı");
       }
     })
   }
@@ -34,5 +40,11 @@ export class CarfilterComponent implements OnInit {
       this.cars = response.data;
       this.dataLoaded = true;
     });
+  }
+  getCarsByBrandAndColor(brandId: number,colorId: number){
+    this.carService.getCarsByColorIdAndBrandId(brandId,colorId).subscribe(response=>{
+      this.cars=response.data;
+      this.dataLoaded = true;
+    })
   }
 }
