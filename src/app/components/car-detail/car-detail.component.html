@@ -1,39 +1,43 @@
+<div class="row mx-1">
 
-  <div class="row mx-1">
-
-    <div class="col-md-5 w-100 h-100">
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div [class]="getCurrentImageClass(carimage)" *ngFor="let carimage of carImages"
-            (click)="setCurrentImage(carimage)">
-            <img class="d-block w-100 img-fluid" src="{{carimage.imagePath}}" />
-          </div>
+  <div class="col-md-5 w-100 h-100">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div [class]="getCurrentImageClass(carimage)" *ngFor="let carimage of carImages"
+          (click)="setCurrentImage(carimage)">
+          <img class="d-block w-100 img-fluid" src="{{carimage.imagePath}}" />
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
       </div>
-    </div>
-    <div class="col-md-6" *ngFor="let carDetail of carDetails">
-      <h2>{{carDetail.carName}}</h2>
-      <hr>
-      <h5 class="d-inline-block">Brand:</h5><p class="d-inline-block ml-1">{{carDetail.brandName}}</p><br>
-      <hr>
-      <h5 class="d-inline-block">Description:</h5><p class="d-inline-block ml-1">{{carDetail.description}}</p>
-      <hr>
-      <br>
-      <h5 class="d-inline-block">Color:</h5><p class="d-inline-block ml-1">{{carDetail.colorName}}</p>
-      <hr>
-      <br>
-      <h5 class="d-inline-block">Daily Price:</h5><p class="d-inline-block ml-1">{{carDetail.dailyPrice}} ₺
-      </p>
-      <hr>
+      <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
   </div>
+  <div class="col-md-6" *ngFor="let carDetail of carDetails">
+    <h2>{{carDetail.carName}}</h2>
+    <hr>
+    <h5 class="d-inline-block">Brand:</h5>
+    <p class="d-inline-block ml-1">{{carDetail.brandName}}</p><br>
+    <hr>
+    <h5 class="d-inline-block">Description:</h5>
+    <p class="d-inline-block ml-1">{{carDetail.description}}</p>
+    <hr>
+    <br>
+    <h5 class="d-inline-block">Color:</h5>
+    <p class="d-inline-block ml-1">{{carDetail.colorName}}</p>
+    <hr>
+    <br>
+    <h5 class="d-inline-block">Daily Price:</h5>
+    <p class="d-inline-block ml-1">{{carDetail.dailyPrice}} ₺
+    </p>
 
+    <hr>
+    <a class="btn btn-outline-success ml-2" routerLink="/rentals/add/{{carDetail.carId}}">Kirala</a>
 
+  </div>
+</div>

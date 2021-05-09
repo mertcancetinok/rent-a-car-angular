@@ -1,0 +1,202 @@
+<div class="container-fluid my-5">
+  <div class="row justify-content-center">
+    <div class="col-xl-10">
+      <div class="card shadow-lg">
+        <div class="row mx-auto justify-content-center text-center">
+          <div class="col-12 mt-3">
+            <nav aria-label="breadcrumb" class="second">
+              <ol class="breadcrumb indigo lighten-6 first">
+                <li class="breadcrumb-item font-weight-bold">
+                  <a class="black-text text-uppercase active-2" href="#"
+                    ><span class="mr-md-3 mr-1">Sipariş Sayfası</span></a
+                  >
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+        <div class="row justify-content-around">
+          <div class="col-md-5">
+            <div class="card border-0">
+              <div class="card-header pb-0">
+                <h2 class="card-title space">Checkout</h2>
+                <p class="card-text text-muted mt-4 space">SHIPPING DETAILS</p>
+                <hr class="my-0" />
+              </div>
+              <div class="card-body">
+                <div class="row justify-content-between">
+                  <div class="col-md-12 mt-4">
+                    <form [formGroup]="rentalAddForm">
+                      <mat-form-field
+                        color="accent"
+                        appearance="fill"
+                        class="example-form-field"
+                      >
+                        <mat-label>Kiralanacak tarihi seçiniz</mat-label>
+                        <input
+                          matInput
+                          [matDatepicker]="picker1"
+                          formControlName="rentDate"
+                          [min]="minDate"
+                        />
+                        <mat-datepicker-toggle
+                          matSuffix
+                          [for]="picker1"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+
+                      <mat-form-field
+                        color="accent"
+                        appearance="fill"
+                        class="example-form-field"
+                      >
+                        <mat-label>Teslim edecilecek tarihi seçiniz</mat-label>
+                        <input
+                          matInput
+                          [matDatepicker]="picker2"
+                          formControlName="returnDate"
+                          [min]="minDate"
+                        />
+                        <mat-datepicker-toggle
+                          matSuffix
+                          [for]="picker2"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                      </mat-form-field>
+                    </form>
+                  </div>
+                </div>
+                <div class="row mt-4">
+                  <div class="col">
+                    <p class="text-muted mb-2">PAYMENT DETAILS</p>
+                    <hr class="mt-0" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="NAME" class="small text-muted mb-1"
+                    >KART SAHİBİNİN AD SOYAD</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    name="NAME"
+                    id="NAME"
+                    aria-describedby="helpId"
+                    placeholder="Name Surname"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="NAME" class="small text-muted mb-1"
+                    >KART NUMARASI</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    name="NAME"
+                    id="NAME"
+                    aria-describedby="helpId"
+                    placeholder="4534 5555 5555 5555"
+                  />
+                </div>
+                <div class="row no-gutters">
+                  <div class="col-sm-6 pr-sm-2">
+                    <div class="form-group">
+                      <label for="NAME" class="small text-muted mb-1"
+                        >SON KULLANMA TARIHI</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        name="NAME"
+                        id="NAME"
+                        aria-describedby="helpId"
+                        placeholder="06/21"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="NAME" class="small text-muted mb-1"
+                        >CVC KODU</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        name="NAME"
+                        id="NAME"
+                        aria-describedby="helpId"
+                        placeholder="183"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-md-5">
+                  <div class="col">
+                    <button
+                      type="button"
+                      name=""
+                      id=""
+                      class="btn btn-lg btn-block"
+                      (click)="add()"
+                    >
+                      KIRALAMAYI TAMAMLA
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="card border-0">
+              <div class="card-header card-2">
+                <p class="card-text text-muted mt-md-4 mb-2 space">
+                  ARAÇ DETAYLARI
+                </p>
+                <hr class="my-2" />
+              </div>
+              <div class="card-body pt-0">
+                <div
+                  class="row justify-content-between"
+                  *ngFor="let carDetail of carDetails"
+                >
+                  <div class="col-auto col-md-7">
+                    <div class="media flex-column flex-sm-row">
+                      <img
+                        class="img-fluid"
+                        [src]="carDetail.carBanner"
+                        width="128"
+                        height="128"
+                      />
+                      <div class="media-body my-auto">
+                        <div class="row">
+                          <div class="col-auto ml-1">
+                            <p class="mb-0">
+                              <b>{{ carDetail.brandName }}</b>
+                            </p>
+                            <p class="mb-0">
+                              <b>{{ carDetail.carName }}</b>
+                            </p>
+                            <p class="mb-0 text-muted">
+                              <b>{{ carDetail.colorName }}</b>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pl-0 flex-sm-col col-auto my-auto">
+                    <p>
+                      <b>{{ carDetail.dailyPrice }} </b>
+                    </p>
+                  </div>
+                </div>
+                <hr class="my-2" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
