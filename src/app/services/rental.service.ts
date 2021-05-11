@@ -20,7 +20,7 @@ export class RentalService {
     return this.httpClient.get<ListResponseModel<Rental>>(newPath);
   }
   addRental(rental:Rental){
-    return this.httpClient.post(this.apiUrl+"rentals/add/",rental);
+    return this.httpClient.post<ListResponseModel<Rental>>(this.apiUrl+"rentals/add/",rental);
   }
 
 }

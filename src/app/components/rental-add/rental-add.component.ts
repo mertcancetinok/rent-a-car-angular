@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CarDetails } from 'src/app/models/carDetails';
 import { CarService } from 'src/app/services/car.service';
+import { CreditCardService } from 'src/app/services/credit-card.service';
 import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
@@ -14,9 +15,10 @@ import { RentalService } from 'src/app/services/rental.service';
 export class RentalAddComponent implements OnInit {
   carDetails:CarDetails[];
   rentalAddForm:FormGroup;
+  creditCardAddForm:FormGroup;
   minDate: Date;
   carId:number;
-  constructor(private formBuilder:FormBuilder,private toastrService:ToastrService,private rentalService:RentalService,private activedRoute:ActivatedRoute,private carService:CarService) {
+  constructor(private formBuilder:FormBuilder,private toastrService:ToastrService,private rentalService:RentalService,private activedRoute:ActivatedRoute,private carService:CarService,private creditCardService:CreditCardService) {
 
    }
 
@@ -29,6 +31,20 @@ export class RentalAddComponent implements OnInit {
     })
     this.minDate = new Date();
     this.createRentalAddForm();
+    this.createCreditCardAddForm();
+  }
+  getAllCards(){
+    return this.creditCardService.getAll().subscribe(response=>{
+      console.log(response.data)
+    })
+  }
+  createCreditCardAddForm(){
+    this.creditCardAddForm = this.formBuilder.group({
+      cardId:["",Validators.required],
+      cvc:["",Validators.required],
+      expirationDate:["",Validators.required],
+      userFullName:["",Validators.required],
+    })
   }
   createRentalAddForm(){
     this.rentalAddForm = this.formBuilder.group({
@@ -44,16 +60,32 @@ export class RentalAddComponent implements OnInit {
     })
   }
   add(){
+     if(this.rentalAddForm.valid && this.creditCardAddForm.valid){
+       this.creditCardService.getCardById(this.creditCardAddForm.value["cardId"]).subscribe(response=>{
+         if(response.data!==null ){
+            this.rentalAddForm.patchValue({
+              carId:this.carId
+             })
+             let rentalModel = Object.assign({},this.rentalAddForm.value);
+             this.rentalService.addRental(rentalModel).subscribe(response=>{
 
-    if(this.rentalAddForm.valid){
-      this.rentalAddForm.patchValue({
-        carId:this.carId
-      })
-      console.log(this.rentalAddForm.value)
-      let rentalModel = Object.assign({},this.rentalAddForm.value);
-      this.rentalService.addRental(rentalModel).subscribe(response=>{
-        console.log(response);
-      })
-    }
+               if(response.success){
+                this.toastrService.success("",response.message);
+               }else{
+                 this.toastrService.error("",response.message)
+               }
+
+             })
+
+
+         }else{
+           this.toastrService.error("","Kredi kartı bilgileri yanlış")
+         }
+       })
+
+
+     }
+   }
+
   }
-}
+
