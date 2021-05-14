@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="container">
+    <div class="col-md-12">
+      <form class="w-75" [formGroup]="brandAddForm">
+        <div class="form-group">
+          <label for="name">Brand Name:</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter brand name" formControlName="name">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="add()">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

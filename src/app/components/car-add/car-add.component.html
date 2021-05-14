@@ -1,0 +1,41 @@
+<div class="container">
+<div class="row">
+
+    <div class="col-md-7">
+      <form class="w-75" [formGroup]="carAddForm">
+        <div class="form-group">
+          <label for="name">Car Name:</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter car name" formControlName="name">
+        </div>
+        <div class="form-group">
+          <label for="brandId">Brand Id:</label>
+          <select (change)="selectBrandChangeHandler($event)" class="custom-select" id="brandId">
+            <option value="{{brand.id}}" *ngFor="let brand of brands">{{brand.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="colorId">Color Id:</label>
+          <select (change)="selectColorChangeHandler($event)" class="custom-select" id="colorId">
+            <option value="{{color.id}}" *ngFor="let color of colors">{{color.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="modelYear">Model Year:</label>
+          <input type="number" class="form-control" id="modelYear" placeholder="Enter model year" formControlName="modelYear">
+        </div>
+        <div class="form-group">
+          <label for="dailyprice">Daily Price:</label>
+          <input type="number" class="form-control" id="dailyPrice" placeholder="Enter daily price" formControlName="dailyPrice">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Description:</label>
+          <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="add()">Submit</button>
+      </form>
+    </div>
+
+  </div>
+
+</div>
