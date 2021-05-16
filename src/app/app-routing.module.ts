@@ -7,6 +7,7 @@ import { RentalAddComponent } from './components/rental-add/rental-add.component
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:"cars/filter/:brandId/:colorId",component:CarfilterComponent},
   {path:"cars/detail/:carId",component:CarDetailComponent},
   {path:"cars/add",component:CarAddComponent},
+  {path:"cars/update/:carId",component:CarUpdateComponent},
   {path:"colors/add",component:ColorAddComponent},
   {path:"brands/add",component:BrandAddComponent},
   {path:"rentals/add/:carId",component:RentalAddComponent},

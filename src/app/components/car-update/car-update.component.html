@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+
+      <div class="col-md-7">
+        <form class="w-75" [formGroup]="carUpdateForm">
+          <div class="form-group">
+            <label for="name">Car Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter car name" formControlName="name" >
+          </div>
+          <div class="form-group">
+            <label for="brandId">Brand Id:</label>
+            <input type="number" class="form-control" id="name" placeholder="Enter car name" formControlName="brandId">
+          </div>
+          <div class="form-group">
+            <label for="colorId">Color Id:</label>
+            <input type="number" class="form-control" id="name" placeholder="Enter car name" formControlName="colorId">
+          </div>
+
+          <div class="form-group">
+            <label for="modelYear">Model Year:</label>
+            <input type="number" class="form-control" id="modelYear" placeholder="Enter model year" formControlName="modelYear">
+          </div>
+          <div class="form-group">
+            <label for="dailyprice">Daily Price:</label>
+            <input type="number" class="form-control" id="dailyPrice" placeholder="Enter daily price" formControlName="dailyPrice">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description:</label>
+            <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="update()">Submit</button>
+        </form>
+      </div>
+
+    </div>
+
+  </div>

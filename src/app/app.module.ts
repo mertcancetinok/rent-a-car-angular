@@ -30,6 +30,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RentalAddComponent } from './components/rental-add/rental-add.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
     RentalAddComponent,
     CarAddComponent,
     ColorAddComponent,
-    BrandAddComponent
+    BrandAddComponent,
+    CarUpdateComponent
   ],
   imports: [
     BrowserModule,
