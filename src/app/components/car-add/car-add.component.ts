@@ -18,6 +18,7 @@ export class CarAddComponent implements OnInit {
   colors:Color[];
   dataLoaded = false;
   carAddForm:FormGroup;
+  carImageAddForm:FormGroup;
   constructor(private brandService:BrandService,private colorService:ColorService,private formBuilder:FormBuilder,private toastrService:ToastrService,private carService:CarService) { }
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class CarAddComponent implements OnInit {
     this.getColors();
     this.createCarAddForm();
   }
+
   createCarAddForm(){
     this.carAddForm = this.formBuilder.group({
       name:["",Validators.required],

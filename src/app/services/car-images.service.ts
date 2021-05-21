@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { CarImage } from '../models/carImage';
+import { ResponseModel } from '../models/responseModel';
 
 
 @Injectable({
