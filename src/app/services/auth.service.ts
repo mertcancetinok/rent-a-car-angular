@@ -12,12 +12,11 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class AuthService {
   apiUrl = "https://localhost:44343/api/auth/";
-  constructor(private httpClient:HttpClient,private localStorageService:LocalStorageService) { }
+  constructor(private httpClient:HttpClient) { }
   register(registerModel:RegisterModel):Observable<SingleResponseModel<TokenModel>>{
     return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"register/",registerModel);
   }
   login(loginModel:LoginModel):Observable<SingleResponseModel<TokenModel>>{
     return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"login/",loginModel);
   }
-
 }

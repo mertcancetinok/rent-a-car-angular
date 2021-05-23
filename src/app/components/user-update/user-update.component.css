@@ -1,0 +1,17 @@
+.password-change,.contact{
+  border-radius: 10px;
+  margin-top: 10px;
+  color: black;
+  padding: 15px;
+}
+.contact h3,.password-change h3{
+  margin-top: 20px;
+  font-size: 24px;
+}
+.contact{
+  background-color: #F5F5F5;
+}
+.password-change{
+  background-color: #F8F9FA;
+}
+

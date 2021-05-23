@@ -6,8 +6,20 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
 
   constructor() { }
+  set(key:string,value:string){
+    localStorage.setItem(key,value)
+  }
+  get(key:string){
+    return localStorage.getItem(key)
+  };
+  clear(){
+    localStorage.clear();
+  }
   setToken(value:string){
     localStorage.setItem("token",value);
+  }
+  add(key:string,value:string){
+    localStorage.setItem(key,value);
   }
   isAuthenticated(){
     if(localStorage.getItem("token")){

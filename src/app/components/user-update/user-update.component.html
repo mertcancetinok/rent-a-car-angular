@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="container">
+    <h1>Kullanıcı Bilgilerim</h1>
+    <p class="text-muted">Bilgilerinizi buradan güncelleyebilirsiniz.</p>
+
+    <form [formGroup]="userUpdateForm">
+      <div class="form-row">
+        <div class="col">
+          Adınız:
+          <input type="text" class="form-control" placeholder="First name" id="firstName" formControlName="firstName">
+        </div>
+        <div class="col w-50">
+          Soyadınız:
+          <input type="text" class="form-control" placeholder="Last name" formControlName="lastName">
+        </div>
+      </div>
+      <button class="btn btn-success my-2" (click)="update()">Güncelle</button>
+      <div class="contact">
+        <h3>İletişim bilgileri</h3>
+        <p>Buradan e-posta adresinizi güncelleyebilirsiniz.</p>
+        <div class="form-group">
+          <label for="email">E-Posta adresi</label>
+          <input type="email" class="form-control w-50" id="email" aria-describedby="emailHelp" autocomplete="email" autofocus formControlName="email">
+        </div>
+        <button class="btn btn-success my-2" (click)="update()">Güncelle</button>
+
+      </div>
+
+      <div class="password-change">
+        <h3>Şifre bilgileri</h3>
+        <p>Buradan şifrenizi güncelleyebilirsiniz.</p>
+        <div class="form-group">
+          <label for="password">Şifrenizi Giriniz</label>
+          <input type="password" class="form-control w-50" id="password" autofocus formControlName="password">
+        </div>
+        <div class="form-group">
+          <label for="newPassword">Yeni şifrenizi Giriniz</label>
+          <input type="password" class="form-control w-50" id="newPassword" autofocus formControlName="newPassword">
+        </div>
+        <button class="btn btn-success my-2" (click)="passwordUpdate()">Güncelle Şifre</button>
+
+      </div>
+
+    </form>
+
+
+  </div>
+</div>

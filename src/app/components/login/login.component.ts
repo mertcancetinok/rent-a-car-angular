@@ -29,9 +29,15 @@ export class LoginComponent implements OnInit {
       let loginModel = Object.assign({},this.loginForm.value);
       this.authService.login(loginModel).subscribe(response=>{
         this.toastrService.success("",response.message)
+        this.localStorageService.set("email",this.loginForm.value["email"])
         this.localStorageService.setToken(response.data.token);
-        this.route.navigate([""]);
+        window.location.href="/cars";
+      },responseError=>{
+        this.toastrService.error(responseError.error)
       })
+    }else{
+      this.toastrService.error("Formu kontrol edin.");
     }
   }
+
 }

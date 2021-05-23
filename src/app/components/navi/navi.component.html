@@ -60,12 +60,33 @@
       <li class="nav-item">
         <a class="nav-link" href="#">İletişim</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/login">Giriş Yap</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/register">Üye Ol</a>
-      </li>
+
+      <ul *ngIf="isLogin==false" class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/login">Giriş Yap</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/register">Üye Ol</a>
+        </li>
+      </ul>
+      <ul *ngIf="isLogin" class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{user.firstName}} {{user.lastName}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="user/update">
+              Kullanıcı İşlemleri
+            </a>
+
+            <a class="dropdown-item" (click)="logout()">
+              Çıkış Yap
+            </a>
+          </div>
+        </li>
+
+      </ul>
     </ul>
   </div>
 </nav>

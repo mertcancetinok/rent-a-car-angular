@@ -29,12 +29,18 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.valid){
       let registerModel = Object.assign({},this.registerForm.value);
       this.authService.register(registerModel).subscribe(response=>{
-        this.localStorageService.setToken(response.data.token);
-        this.toastrService.success("",response.message)
-        this.route.navigate([""])
-
+        if(response.success){
+          this.localStorageService.setToken(response.data.token);
+          this.localStorageService.add("email",this.registerForm.value["email"])
+          this.toastrService.success("",response.message)
+          this.route.navigate([""])
+        }
+      },responseError=>{
+        this.toastrService.error(responseError.error)
       })
-
+    }else{
+      this.toastrService.error("Formu kontrol edin.");
     }
   }
+
 }
